@@ -1,14 +1,11 @@
 const Discord = require("discord.js")
 const intents = new Discord.IntentsBitField(3276799)
 const bot = new Discord.Client({intents})
-//const bot = new Discord.Client()
 const loadCommands = require("./Loaders/loadCommands")
 const config = require("./config.js")
+ 
 
-   // at the top of your file
-   const { EmbedBuilder } = require('discord.js');
-
-
+bot.login(config.token)
 bot.commands = new Discord.Collection()
 
 loadCommands(bot)
@@ -24,32 +21,6 @@ bot.on("messageCreate", async message => {
 bot.on("messageCreate", async message => {
     if(message.content === "!spam") return bot.commands.get("spam").run(bot, message)
 })
-
-bot.on("messageCreate", async message => {
-    if(message.content === "!caillou") return bot.commands.get("caillou").run(bot, message)
-})
-
-// bot.users.get('879448688206942248').send('yolo');
-
-bot.on('message', async message => {
-    let usr = bot.users.fetch(message.replace('<@!', '').replace('>', ''));
-    message.channel.send(`id: ${usr.id}\nname: ${usr.username}`);
-});
-
-bot.users.send('879448688206942248', 'content');
-
-
-interaction.channel.send('My message to react to.').then(sentMessage => {
-	// Unicode emoji
-	sentMessage.react('👍');
-
-	// Custom emoji
-	sentMessage.react('123456789012345678');
-	sentMessage.react('<emoji:123456789012345678>');
-	sentMessage.react('<a:emoji:123456789012345678>');
-	sentMessage.react('emoji:123456789012345678');
-	sentMessage.react('a:emoji:123456789012345678');
-});
 
 
 
@@ -70,7 +41,7 @@ const Embed = new EmbedBuilder()
 	.setTimestamp()
 	//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
-    const channelID = '1076064216135520297';
+    const channelID = '1076071906945548291';
 
     //console.log(member.user.username)
 
@@ -87,9 +58,5 @@ const Embed = new EmbedBuilder()
         return;
     })
 })
-
-
-
-bot.login(config.token)
 
 
